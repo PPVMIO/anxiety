@@ -2,6 +2,7 @@ package graph
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
 	"time"
 )
@@ -29,13 +30,6 @@ func (t *Thought) setLevel(newLevel int) {
 	*t = Thought{Value: t.Value, First: t.First, Level: newLevel}
 }
 
-func (t *Thought) incrementLevel(newLevel int) {
-	// level := t.GetLevel()
-	// *level = newLevel
-
-	*t = Thought{Value: t.Value, First: t.First, Level: newLevel}
-}
-
 func (a *Anxiety) AddThought(n *Thought) {
 	a.lock.Lock()
 	a.Thoughts = append(a.Thoughts, n)
@@ -46,7 +40,7 @@ func (a *Anxiety) AddThought(n *Thought) {
 func (a *Anxiety) Connect(n1, n2 *Thought) {
 
 	a.lock.Lock()
-	n2.setLevel(n1.Level + 1)
+	// n2.setLevel(n1.Level + 1)
 	if a.Connections == nil {
 		a.Connections = make(map[Thought][]*Thought)
 	}
@@ -72,6 +66,31 @@ func (a *Anxiety) String() {
 	a.lock.RUnlock()
 }
 
+func (a *Anxiety) TraverseDepth() {
+	a.lock.RLock()
+	n := a.Thoughts[0]
+	visited := NewListMap()
+	a.visit(n, visited)
+	a.lock.RUnlock()
+}
+
+func (a *Anxiety) visit(n *Thought, visited ListMap) {
+	rand.Seed(time.Now().UnixNano())
+	r := rand.Intn(2)
+	time.Sleep(time.Duration(r) * time.Second)
+	visited.Set(n, true)
+	for _, v := range visited.keys {
+		// fmt.Printf(v.Value+"%d", v.Level)
+		fmt.Printf(fmt.Sprintf(v.Value+"%d ", v.Level))
+	}
+	// fmt.Println(fmt.Sprintf(n.Value+"%d", n.Level))
+	fmt.Println()
+	near := a.Connections[*n]
+	for _, t := range near {
+		a.visit(t, visited)
+	}
+}
+
 // Traverse implements the BFS traversing algorithm
 func (a *Anxiety) Traverse() {
 	a.lock.RLock()
@@ -92,19 +111,19 @@ func (a *Anxiety) Traverse() {
 		thought := q.Dequeue()
 		near := a.Connections[*thought]
 
+		// a.String()
+		prevThoughts.Set(thought, true)
+
 		for i := 0; i < len(near); i++ {
 			j := near[i]
+			thinkAbout(j, prevThoughts)
+
 			q.Enqueue(*j)
 
 			// if !visited[j] {
 			// 	visited[j] = true
 			// }
 		}
-
-		// a.String()
-		prevThoughts.Set(thought, true)
-		thinkAbout(thought, prevThoughts)
-
 		// visited[thought] = true
 
 	}
@@ -116,7 +135,11 @@ func thinkAbout(t *Thought, visited ListMap) {
 	time.Sleep(1 * time.Second)
 	for k := range visited.keys {
 		// keys = append(keys, k)
-		fmt.Print(fmt.Sprintf(visited.keys[k].Value+"%d ", visited.keys[k].Level))
+		indent := ""
+		for i := 0; i < visited.keys[k].Level; i++ {
+			indent += "  "
+		}
+		fmt.Println(fmt.Sprintf(indent+visited.keys[k].Value+"%d ", visited.keys[k].Level))
 	}
 	fmt.Println()
 	// fmt.Printf("Recently Visited %v ", t.Value)

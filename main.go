@@ -31,13 +31,13 @@ func createAnxiety() graph.Anxiety {
 
 	anxiety := graph.Anxiety{Thoughts: thoughts}
 
-	anxiety.Connect(&a, &b)
-	anxiety.Connect(&b, &c)
 	anxiety.Connect(&a, &d)
+	anxiety.Connect(&d, &c)
+	anxiety.Connect(&a, &b)
 	anxiety.Connect(&a, &f)
 	anxiety.Connect(&e, &f)
 	anxiety.Connect(&d, &e)
-	// anxiety.Connect(&e, &a)
+	anxiety.Connect(&e, &a)
 	// anxiety.Connect(&e, &a)
 	// anxiety.Connect(&c, &a)
 	// a.Connect(&nB, &nE)
@@ -51,5 +51,5 @@ func createAnxiety() graph.Anxiety {
 func main() {
 	a := createAnxiety()
 	// a.String()
-	a.Traverse()
+	a.TraverseDepth()
 }
