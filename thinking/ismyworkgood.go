@@ -10,16 +10,18 @@ var DoesItMatter graph.Thought = graph.Thought{Value: "DoesItMatter"}
 var WhatIfTheyDoCare graph.Thought = graph.Thought{Value: "WhatIfTheyDoCare"}
 var WhatIfTheyDont graph.Thought = graph.Thought{Value: "WhatIfTheyDont"}
 
-// func IsMyWorkGood(a *graph.Anxiety, loop bool) {
+func isMyWorkGoodEnoughAnxiety(a *graph.Anxiety) {
+	a.AddThought(&IsMyWorkGoodEnough)
+	a.AddThought(&WillAnyoneCare)
+	a.AddThought(&DoesItMatter)
+	a.AddThought(&WhatIfTheyDoCare)
+	a.AddThought(&WhatIfTheyDont)
 
-// 	a.AddThought(&isMyWorkGoodEnough)
-// 	a.AddThought(&willAnyoneCare)
-// 	a.AddThought(&doesItMatter)
-// 	a.AddThought(&whatIfTheyDoCare)
-// 	a.AddThought(&whatIfTheyDont)
+	a.Connect(&IsMyWorkGoodEnough, &WillAnyoneCare)
+	a.Connect(&WillAnyoneCare, &DoesItMatter)
+	a.Connect(&DoesItMatter, &WhatIfTheyDoCare)
+	a.Connect(&DoesItMatter, &WhatIfTheyDont)
 
-// 	a.Connect(&isMyWorkGoodEnough, &willAnyoneCare)
-// 	a.Connect(&willAnyoneCare, &doesItMatter)
-// 	a.Connect(&doesItMatter, &whatIfTheyDoCare)
-// 	a.Connect(&doesItMatter, &whatIfTheyDont)
-// }
+	// Loop
+	a.Connect(&WhatIfTheyDont, &IsMyWorkGoodEnough)
+}

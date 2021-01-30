@@ -48,16 +48,15 @@ func (a *Anxiety) Connect(t1, t2 *Thought) {
 
 func (a *Anxiety) RandomConnect() {
 	a.loop = true
-	rand.Seed(time.Now().UnixNano())
-	randomThought0 := a.Thoughts[rand.Intn(len(a.Thoughts))]
-	randomThought1 := a.Thoughts[rand.Intn(len(a.Thoughts))]
-	a.Connect(randomThought0, randomThought1)
+	// rand.Seed(time.Now().UnixNano())
+	// randomThought0 := a.Thoughts[rand.Intn(len(a.Thoughts))]
+	// randomThought1 := a.Thoughts[rand.Intn(len(a.Thoughts))]
+	// a.Connect(randomThought0, randomThought1)
 }
 
 func (a *Anxiety) String() {
 	a.lock.RLock()
 	s := ""
-	time.Sleep(1 * time.Second)
 	for i := 0; i < len(a.Thoughts); i++ {
 		s += a.Thoughts[i].Value + " -> "
 		near := a.Connections[*a.Thoughts[i]]
@@ -72,7 +71,6 @@ func (a *Anxiety) String() {
 
 func (a *Anxiety) TraverseDepth(t *Thought) {
 	a.lock.RLock()
-	// n := a.Thoughts[0]
 	visitedThoughts := NewListMap()
 	a.visit(t, visitedThoughts, 0)
 	a.lock.RUnlock()
@@ -83,12 +81,11 @@ func (a *Anxiety) visit(n *Thought, visitedThoughts ListMap, level int) {
 	if !a.loop && visitedThoughts.visited[n] > 0 {
 		return
 	}
-	rand.Seed(time.Now().UnixNano())
 
 	// could write alg. here to randomly return on certain visits otherwise wait till 10
 	// r1 := rand.Intn(3-1) + 1
 	// fmt.Printf("Level: %d, Random %d\n", level, r1)
-	// if level > 3 && r1 == 2 {
+	// if visitedThoughts.visited[n] > 100 && chance(10, 0) == 5 {
 	// 	return
 	// }
 
@@ -96,23 +93,23 @@ func (a *Anxiety) visit(n *Thought, visitedThoughts ListMap, level int) {
 	// 	return
 	// }
 
-	rDuration := rand.Intn(3-1) + 1
-	time.Sleep(time.Duration(rDuration) * time.Second)
+	// rDuration := chance(, 1)
+	// time.Sleep(time.Duration(250) * time.Millisecond)
 	visitedThoughts.visit(n)
 
-	indent := ""
-	for i := 0; i < level%100; i++ {
-		indent += "  "
-	}
-
 	color.Set(pickColor(visitedThoughts.visited[n], a.loop))
-	fmt.Printf(indent + n.Value + "\n")
+	fmt.Printf("[%d] "+indent(level)+n.Value+"\n", visitedThoughts.visited[n])
 	color.Unset()
 
 	near := a.Connections[*n]
 	for _, t := range near {
 		a.visit(t, visitedThoughts, level+1)
 	}
+}
+
+func (a *Anxiety) randomVisit(visitedThoughts ListMap, level int) {
+	randomThought := a.Thoughts[chance(len(a.Thoughts), 0)]
+	a.visit(randomThought, visitedThoughts, level)
 }
 
 func pickColor(n int, loop bool) color.Attribute {
@@ -126,4 +123,17 @@ func pickColor(n int, loop bool) color.Attribute {
 		6: color.FgHiRed,
 	}
 	return colors[n%len(colors)]
+}
+
+func indent(level int) string {
+	str := ""
+	for i := 0; i < level%100; i++ {
+		str += "  "
+	}
+	return str
+}
+
+func chance(hi int, lo int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(hi-lo) + lo
 }
