@@ -1,4 +1,4 @@
-package thinking
+package journal
 
 import (
 	"github.com/ppelayo/anxiety/graph"
@@ -10,7 +10,7 @@ var DoesItMatter graph.Thought = graph.Thought{Value: "DoesItMatter"}
 var WhatIfTheyDoCare graph.Thought = graph.Thought{Value: "WhatIfTheyDoCare"}
 var WhatIfTheyDont graph.Thought = graph.Thought{Value: "WhatIfTheyDont"}
 
-func isMyWorkGoodEnoughAnxiety(a *graph.Anxiety) {
+func isMyWorkGoodEnough(a *graph.Anxiety) {
 	a.AddThought(&IsMyWorkGoodEnough)
 	a.AddThought(&WillAnyoneCare)
 	a.AddThought(&DoesItMatter)

@@ -1,4 +1,4 @@
-package thinking
+package journal
 
 import (
 	"github.com/ppelayo/anxiety/graph"

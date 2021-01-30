@@ -1,4 +1,4 @@
-package thinking
+package journal
 
 import (
 	"github.com/ppelayo/anxiety/graph"
@@ -24,7 +24,7 @@ var ButItCouldBe graph.Thought = graph.Thought{Value: "ButItCouldBe"}
 var WhyNot graph.Thought = graph.Thought{Value: "WhyNot"}
 var IGuessTheresALotOfReasonsLol graph.Thought = graph.Thought{Value: "IGuessTheresALotOfReasonsLol"}
 
-func toBeHonestImKindaIntoYouAnxiety(a *graph.Anxiety) {
+func toBeHonestImKindaIntoYou(a *graph.Anxiety) {
 	// to be honest I'm kinda into you
 	a.AddThought(&ToBeHonestImKindaIntoYou)
 	a.AddThought(&LikeYoureReallyCool)

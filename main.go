@@ -5,13 +5,13 @@ import (
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/ppelayo/anxiety/graph"
-	"github.com/ppelayo/anxiety/thinking"
+	"github.com/ppelayo/anxiety/journal"
 )
 
 func main() {
 
 	anxiety := graph.Anxiety{}
-	thinking.BuildAnxiety(&anxiety)
+	journal.BuildAnxiety(&anxiety)
 	firstThoughts := make([]string, 0)
 	for _, t := range anxiety.FirstThoughts {
 		firstThoughts = append(firstThoughts, t.Value)
