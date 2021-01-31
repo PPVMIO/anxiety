@@ -14,12 +14,13 @@ var Smart = graph.Thought{Value: "Smart"}
 var PopularLol = graph.Thought{Value: "PopularLol"}
 var GoodAtALotOFThings = graph.Thought{Value: "GoodAtALotOFThings"}
 var ButActuallyImAnxiousALot = graph.Thought{Value: "ButActuallyImAnxiousALot"}
-var ItsActuallyAMajorMotivator = graph.Thought{Value: "ItsActuallyAMajorMotivator"}
-var FearOfFailing = graph.Thought{Value: "FearOfFailing"}
-var FearOfMissingOut = graph.Thought{Value: "FearOfMissingOut"}
-var FearOfNotBeingEnough = graph.Thought{Value: "FearOfNotBeingEnough"}
+var ItsAMajorMotivatorForMe = graph.Thought{Value: "ItsAMajorMotivatorForMe"}
+var Anxiety = graph.Thought{Value: "Anxiety"}
+var TheFearOfFailing = graph.Thought{Value: "TheFearOfFailing"}
+var TheFearOfMissingOut = graph.Thought{Value: "TheFearOfMissingOut"}
+var TheFearOfNotBeingEnough = graph.Thought{Value: "TheFearOfNotBeingEnough"}
 var ItsAllRelated = graph.Thought{Value: "ItsAllRelated"}
-var IWantEverythingToDoToBeDeliberate = graph.Thought{Value: "IWantEverythingToDoToBeDeliberate"}
+var IWantEverythingIDoToBeDeliberate = graph.Thought{Value: "IWantEverythingIDoToBeDeliberate"}
 var AndThoughtThrough = graph.Thought{Value: "AndThoughtThrough"}
 var AndPlanned = graph.Thought{Value: "AndPlanned"}
 var ItMakesMeWorkHarder = graph.Thought{Value: "ItMakesMeWorkHarder"}
@@ -53,12 +54,13 @@ func itAintACakeWalkOverHere(a *graph.Anxiety) {
 	a.AddThought(&PopularLol)
 	a.AddThought(&GoodAtALotOFThings)
 	a.AddThought(&ButActuallyImAnxiousALot)
-	a.AddThought(&ItsActuallyAMajorMotivator)
-	a.AddThought(&FearOfFailing)
-	a.AddThought(&FearOfMissingOut)
-	a.AddThought(&FearOfNotBeingEnough)
+	a.AddThought(&ItsAMajorMotivatorForMe)
+	a.AddThought(&Anxiety)
+	a.AddThought(&TheFearOfFailing)
+	a.AddThought(&TheFearOfMissingOut)
+	a.AddThought(&TheFearOfNotBeingEnough)
 	a.AddThought(&ItsAllRelated)
-	a.AddThought(&IWantEverythingToDoToBeDeliberate)
+	a.AddThought(&IWantEverythingIDoToBeDeliberate)
 	a.AddThought(&AndThoughtThrough)
 	a.AddThought(&AndPlanned)
 	a.AddThought(&ItMakesMeWorkHarder)
@@ -80,4 +82,43 @@ func itAintACakeWalkOverHere(a *graph.Anxiety) {
 	a.AddThought(&CantFailAtSomethingThatNeverMattered)
 	a.AddThought(&LikeISaid)
 	a.AddThought(&AintACakeWalkOverHere)
+
+	a.Connect(&ItAintACakeWalkOverHere, &IConsiderMyselfAHighFunctioningAnxiousPerson)
+	a.Connect(&InTheSenseThatIWouldConsiderMyselfHighlyCapable, &AsFarAs)
+	a.Connect(&AsFarAs, &Work)
+	a.Connect(&AsFarAs, &PhysicalFitness)
+	a.Connect(&AsFarAs, &Smart)
+	a.Connect(&AsFarAs, &PopularLol)
+	a.Connect(&AsFarAs, &GoodAtALotOFThings)
+	a.Connect(&IConsiderMyselfAHighFunctioningAnxiousPerson, &ButActuallyImAnxiousALot)
+	a.Connect(&ButActuallyImAnxiousALot, &ItsAMajorMotivatorForMe)
+	a.Connect(&ItsAMajorMotivatorForMe, &Anxiety)
+	a.Connect(&Anxiety, &TheFearOfFailing)
+	a.Connect(&Anxiety, &TheFearOfMissingOut)
+	a.Connect(&Anxiety, &TheFearOfNotBeingEnough)
+	a.Connect(&ItsAMajorMotivatorForMe, &ItsAllRelated)
+	a.Connect(&ButActuallyImAnxiousALot, &IWantEverythingIDoToBeDeliberate)
+	a.Connect(&IWantEverythingIDoToBeDeliberate, &AndThoughtThrough)
+	a.Connect(&IWantEverythingIDoToBeDeliberate, &AndPlanned)
+	a.Connect(&IWantEverythingIDoToBeDeliberate, &ItMakesMeWorkHarder)
+	a.Connect(&IWantEverythingIDoToBeDeliberate, &ItMakesMePushMyself)
+	a.Connect(&IWantEverythingIDoToBeDeliberate, &ItMakesMeSuccessfulByLotsOfStandards)
+	a.Connect(&IConsiderMyselfAHighFunctioningAnxiousPerson, &ButItAlsoMakesItReallyDifficultToAcceptFailure)
+	a.Connect(&ButItAlsoMakesItReallyDifficultToAcceptFailure, &IPutTimeIntoEverythingIDo)
+	a.Connect(&ButItAlsoMakesItReallyDifficultToAcceptFailure, &AndWhenTheEffortIPutDoesNotMatchTheOutcome)
+	a.Connect(&AndWhenTheEffortIPutDoesNotMatchTheOutcome, &WhetherThats)
+	a.Connect(&WhetherThats, &Relationships)
+	a.Connect(&WhetherThats, &MyCareer)
+	a.Connect(&WhetherThats, &MyFriendships)
+	a.Connect(&WhetherThats, &EvenSomethingAsSimpleAsWeekendPlans)
+	a.Connect(&WhetherThats, &OrASimpleText)
+	a.Connect(&AndWhenTheEffortIPutDoesNotMatchTheOutcome, &ITakeItReallyHard)
+	a.Connect(&AndWhenTheEffortIPutDoesNotMatchTheOutcome, &IShutDown)
+	a.Connect(&AndWhenTheEffortIPutDoesNotMatchTheOutcome, &PretendLikeIDontCare)
+	a.Connect(&AndWhenTheEffortIPutDoesNotMatchTheOutcome, &OrImBusyWithOtherThings)
+	a.Connect(&ButItAlsoMakesItReallyDifficultToAcceptFailure, &CantFailAtSomethingThatNeverMattered)
+	a.Connect(&CantFailAtSomethingThatNeverMattered, &LikeISaid)
+	a.Connect(&LikeISaid, &AintACakeWalkOverHere)
+
+	a.Connect(&AintACakeWalkOverHere, &ItAintACakeWalkOverHere)
 }

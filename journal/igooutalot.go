@@ -5,7 +5,7 @@ import (
 )
 
 var IGoOutALot = graph.Thought{Value: "IGoOutALot", First: true}
-var ILikegettingFuckedUp = graph.Thought{Value: "ILikegettingFuckedUp"}
+var ILikeGettingFuckedUp = graph.Thought{Value: "ILikeGettingFuckedUp"}
 var WhyDoIDoItSoMuch = graph.Thought{Value: "WhyDoIDoItSoMuch"}
 var IOnlyReallyDoPartyDrugsNow = graph.Thought{Value: "IOnlyReallyDoPartyDrugsNow"}
 var ICantDoAnyOfThatPsychedelicShit = graph.Thought{Value: "ICantDoAnyOfThatPsychedelicShit"}
@@ -21,26 +21,27 @@ var TryingToPersonallyImprove = graph.Thought{Value: "TryingToPersonallyImprove"
 var TheAmountOfMentalPressureIPutOnMyselfIsALot = graph.Thought{Value: "TheAmountOfMentalPressureIPutOnMyselfIsALot"}
 var IhavePerfectionistTendencies = graph.Thought{Value: "IhavePerfectionistTendencies"}
 var AndINeedABreakFromAllOfThat = graph.Thought{Value: "AndINeedABreakFromAllOfThat"}
-var IJustWantAMentalBreakFromBeingAllThatTypeAShit = graph.Thought{Value: "IJustWantAMentalBreakFromBeingAllThatTypeAShit"}
+var SoIDrinkAndDoDrugs = graph.Thought{Value: "SoIDrinkAndDoDrugs"}
 var ButHonestly = graph.Thought{Value: "ButHonestly"}
 var ItsNotQuiteEnoughAnymore = graph.Thought{Value: "ItsNotQuiteEnoughAnymore"}
 var IDontKnowIfItsThePandemic = graph.Thought{Value: "IDontKnowIfItsThePandemic"}
 var CuzGoingOutNowIsNotWhatItWasPrepandemic = graph.Thought{Value: "CuzGoingOutNowIsNotWhatItWasPrepandemic"}
 var ButEmotionallyImStartingToThinkItDrainsMeJustAsMuchAsWork = graph.Thought{Value: "ButEmotionallyImStartingToThinkItDrainsMeJustAsMuchAsWork"}
 var ItsNotThatIDontLovePartying = graph.Thought{Value: "ItsNotThatIDontLovePartying"}
-var AndGettingFuckedUp = graph.Thought{Value: "AndGettingFuckedUp"}
+var IStillThinkThereIsLegitamiteValueToGoingOut = graph.Thought{Value: "IStillThinkThereIsLegitamiteValueToGoingOut"}
 var ButIReallyNeedToReexamineMyRelationshipWithTheWholeConcept = graph.Thought{Value: "ButIReallyNeedToReexamineMyRelationshipWithTheWholeConcept"}
 var TheresNothingWorse = graph.Thought{Value: "TheresNothingWorse"}
 var ThanGoingToBedFuckedUpAndAloneLol = graph.Thought{Value: "ThanGoingToBedFuckedUpAndAloneLol"}
 var AndMentallyInABadPlace = graph.Thought{Value: "AndMentallyInABadPlace"}
 var AndIFeelLikeIEndUpThereTooOften = graph.Thought{Value: "AndIFeelLikeIEndUpThereTooOften"}
 var ItGoesAwayWhenIWakeup = graph.Thought{Value: "ItGoesAwayWhenIWakeup"}
-var ButThenIDoItAgainNextWeekLmao = graph.Thought{Value: "ButThenIDoItAgainNextWeekLmao"}
+var ButIllProbablyGoOutTonight = graph.Thought{Value: "ButIllProbablyGoOutTonight"}
+var BeerIsMyFavorite = graph.Thought{Value: "BeerIsMyFavorite"}
 
 func iGoOutALot(a *graph.Anxiety) {
 
 	a.AddThought(&IGoOutALot)
-	a.AddThought(&ILikegettingFuckedUp)
+	a.AddThought(&ILikeGettingFuckedUp)
 	a.AddThought(&WhyDoIDoItSoMuch)
 	a.AddThought(&IOnlyReallyDoPartyDrugsNow)
 	a.AddThought(&ICantDoAnyOfThatPsychedelicShit)
@@ -56,19 +57,45 @@ func iGoOutALot(a *graph.Anxiety) {
 	a.AddThought(&TheAmountOfMentalPressureIPutOnMyselfIsALot)
 	a.AddThought(&IhavePerfectionistTendencies)
 	a.AddThought(&AndINeedABreakFromAllOfThat)
-	a.AddThought(&IJustWantAMentalBreakFromBeingAllThatTypeAShit)
+	a.AddThought(&SoIDrinkAndDoDrugs)
 	a.AddThought(&ButHonestly)
 	a.AddThought(&ItsNotQuiteEnoughAnymore)
 	a.AddThought(&IDontKnowIfItsThePandemic)
 	a.AddThought(&CuzGoingOutNowIsNotWhatItWasPrepandemic)
 	a.AddThought(&ButEmotionallyImStartingToThinkItDrainsMeJustAsMuchAsWork)
 	a.AddThought(&ItsNotThatIDontLovePartying)
-	a.AddThought(&AndGettingFuckedUp)
+	a.AddThought(&IStillThinkThereIsLegitamiteValueToGoingOut)
 	a.AddThought(&ButIReallyNeedToReexamineMyRelationshipWithTheWholeConcept)
-	a.AddThought(&TheresNothingWorse)
-	a.AddThought(&ThanGoingToBedFuckedUpAndAloneLol)
-	a.AddThought(&AndMentallyInABadPlace)
-	a.AddThought(&AndIFeelLikeIEndUpThereTooOften)
-	a.AddThought(&ItGoesAwayWhenIWakeup)
-	a.AddThought(&ButThenIDoItAgainNextWeekLmao)
+	a.AddThought(&ButIllProbablyGoOutTonight)
+	a.AddThought(&BeerIsMyFavorite)
+
+	a.Connect(&IGoOutALot, &ILikeGettingFuckedUp)
+	a.Connect(&ILikeGettingFuckedUp, &WhyDoIDoItSoMuch)
+	a.Connect(&WhyDoIDoItSoMuch, &ImTooHighStrug)
+	a.Connect(&ImTooHighStrug, &IGuessTheresYourAnswer)
+	a.Connect(&IGuessTheresYourAnswer, &ThatsWhyIGoOut)
+	a.Connect(&ThatsWhyIGoOut, &ISpendTheEntireWorkWeek)
+	a.Connect(&ISpendTheEntireWorkWeek, &FunctioningAtThisSuperHighCapacity)
+	a.Connect(&ISpendTheEntireWorkWeek, &DissectingProblems)
+	a.Connect(&ISpendTheEntireWorkWeek, &WorkingOut)
+	a.Connect(&ISpendTheEntireWorkWeek, &WorkingOnProjects)
+	a.Connect(&ISpendTheEntireWorkWeek, &TryingToPersonallyImprove)
+	a.Connect(&ISpendTheEntireWorkWeek, &TheAmountOfMentalPressureIPutOnMyselfIsALot)
+	a.Connect(&ISpendTheEntireWorkWeek, &IhavePerfectionistTendencies)
+	a.Connect(&ISpendTheEntireWorkWeek, &AndINeedABreakFromAllOfThat)
+	a.Connect(&AndINeedABreakFromAllOfThat, &SoIDrinkAndDoDrugs)
+	a.Connect(&SoIDrinkAndDoDrugs, &IOnlyReallyDoPartyDrugsNow)
+	a.Connect(&SoIDrinkAndDoDrugs, &ICantDoAnyOfThatPsychedelicShit)
+	a.Connect(&SoIDrinkAndDoDrugs, &ICantDoAnyOfThatPsychedelicShit)
+	a.Connect(&SoIDrinkAndDoDrugs, &ButHonestly)
+	a.Connect(&ButHonestly, &ItsNotQuiteEnoughAnymore)
+	a.Connect(&ItsNotQuiteEnoughAnymore, &IDontKnowIfItsThePandemic)
+	a.Connect(&CuzGoingOutNowIsNotWhatItWasPrepandemic, &ButEmotionallyImStartingToThinkItDrainsMeJustAsMuchAsWork)
+	a.Connect(&ItsNotThatIDontLovePartying, &IStillThinkThereIsLegitamiteValueToGoingOut)
+	a.Connect(&ItsNotThatIDontLovePartying, &ButIReallyNeedToReexamineMyRelationshipWithTheWholeConcept)
+	a.Connect(&ItsNotThatIDontLovePartying, &ButIReallyNeedToReexamineMyRelationshipWithTheWholeConcept)
+	a.Connect(&ButIReallyNeedToReexamineMyRelationshipWithTheWholeConcept, &ButIllProbablyGoOutTonight)
+
+	a.Connect(&ButIllProbablyGoOutTonight, &IGoOutALot)
+
 }

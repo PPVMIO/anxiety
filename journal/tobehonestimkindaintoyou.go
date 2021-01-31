@@ -64,5 +64,5 @@ func toBeHonestImKindaIntoYou(a *graph.Anxiety) {
 	a.Connect(&WhyNot, &IGuessTheresALotOfReasonsLol)
 
 	// Loop
-	a.Connect(&IGuessTheresALotOfReasonsLol, &ButItsKindaFuckedUpNo)
+	a.Connect(&IGuessTheresALotOfReasonsLol, &ToBeHonestImKindaIntoYou)
 }

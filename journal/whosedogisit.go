@@ -162,7 +162,6 @@ func whoseDogIsThat(a *graph.Anxiety) {
 	a.AddThought(&RipFmlLol)
 
 	a.Connect(&WhoseDogIsThat, &IsItYourFriends)
-	a.Connect(&WhoseDogIsThat, &IsItYourFriends)
 	a.Connect(&IsItYourFriends, &IsItSomeoneElses)
 	a.Connect(&IsItYourFriends, &Lolll)
 	a.Connect(&IsItYourFriends, &ImLiterallyGoingCrazy)
@@ -233,4 +232,7 @@ func whoseDogIsThat(a *graph.Anxiety) {
 	a.Connect(&YouSaidILoseInterestInThings, &ThatStillHurts)
 	a.Connect(&ThatStillHurts, &IDontThinkItsAccurate)
 	a.Connect(&ThatStillHurts, &ButIGetItItsFair)
+
+	// Loop
+	a.Connect(&ButIGetItItsFair, &WhoseDogIsThat)
 }

@@ -41,11 +41,8 @@ func main() {
 
 	if shouldSpiral {
 		anxiety.RandomConnect()
-		// 	anxiety.RandomConnect()
-		// 	anxiety.RandomConnect()
 	}
 
-	anxiety.String()
 	firstThought := anxiety.FirstThoughts[answers.Choice]
 	anxiety.TraverseDepth(firstThought)
 
@@ -55,16 +52,4 @@ func handleErr(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-
-func countLeadingSpace(line string) int {
-	i := 0
-	for _, runeValue := range line {
-		if runeValue == ' ' {
-			i++
-		} else {
-			break
-		}
-	}
-	return i
 }

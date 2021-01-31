@@ -73,6 +73,7 @@ func whatILikeAboutThisProject(a *graph.Anxiety) {
 	a.Connect(&IWouldSayThisIsActuallyAJournal, &DisguisedAsAnArtProject)
 	a.Connect(&DisguisedAsAnArtProject, &DisguisedAsAProgram)
 	a.Connect(&DisguisedAsAProgram, &InceptionFuckingShit)
-	a.Connect(&DisguisedAsAProgram, &InceptionFuckingShit)
 
+	// Loop
+	a.Connect(&InceptionFuckingShit, &WhatILikeAboutThisProject)
 }

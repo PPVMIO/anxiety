@@ -9,17 +9,7 @@ func BuildAnxiety(a *graph.Anxiety) {
 	whoseDogIsThat(a)
 	whatILikeAboutThisProject(a)
 	iGoOutALot(a)
-	iHateRockClimbingAndAllBirds(a)
 	itAintACakeWalkOverHere(a)
 	iTalkToMyselfWayMoreNowLmao(a)
 	whatsMyActualProblem(a)
-
-	// loops
-
 }
-
-// func Loop(a *graph.Anxiety) {
-
-// 	// a.SetLoop()
-// 	a.RandomConnect()
-// }

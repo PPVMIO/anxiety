@@ -32,10 +32,6 @@ func (a *Anxiety) AddThought(t *Thought) {
 	a.lock.Unlock()
 }
 
-func (a *Anxiety) SetLoop() {
-	a.loop = true
-}
-
 func (a *Anxiety) Connect(t1, t2 *Thought) {
 
 	a.lock.Lock()
@@ -48,10 +44,12 @@ func (a *Anxiety) Connect(t1, t2 *Thought) {
 
 func (a *Anxiety) RandomConnect() {
 	a.loop = true
-	// rand.Seed(time.Now().UnixNano())
-	// randomThought0 := a.Thoughts[rand.Intn(len(a.Thoughts))]
-	// randomThought1 := a.Thoughts[rand.Intn(len(a.Thoughts))]
-	// a.Connect(randomThought0, randomThought1)
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i < len(a.Thoughts)/4; i++ {
+		randomThought0 := a.Thoughts[rand.Intn(len(a.Thoughts))]
+		randomThought1 := a.Thoughts[rand.Intn(len(a.Thoughts))]
+		a.Connect(randomThought0, randomThought1)
+	}
 }
 
 func (a *Anxiety) String() {
@@ -80,26 +78,20 @@ func (a *Anxiety) visit(n *Thought, visitedThoughts ListMap, level int) {
 
 	if !a.loop && visitedThoughts.visited[n] > 0 {
 		return
+	} else if visitedThoughts.visited[n] > 634 {
+		return
 	}
 
-	// could write alg. here to randomly return on certain visits otherwise wait till 10
-	// r1 := rand.Intn(3-1) + 1
-	// fmt.Printf("Level: %d, Random %d\n", level, r1)
-	// if visitedThoughts.visited[n] > 100 && chance(10, 0) == 5 {
-	// 	return
-	// }
-
-	// if level == r1 {
-	// 	return
-	// }
-
-	// rDuration := chance(, 1)
-	// time.Sleep(time.Duration(250) * time.Millisecond)
 	visitedThoughts.visit(n)
 
-	color.Set(pickColor(visitedThoughts.visited[n], a.loop))
-	fmt.Printf("[%d] "+indent(level)+n.Value+"\n", visitedThoughts.visited[n])
+	// color.Set(pickColor(visitedThoughts.visited[n], a.loop))
+	color.Set(pickColor(level, a.loop))
+	// fmt.Printf("[%d] "+indent(level)+n.Value+"", visitedThoughts.visited[n])
+	fmt.Printf(n.Value+"_%d     ", visitedThoughts.visited[n])
 	color.Unset()
+
+	rDuration := chance(2000, 500)
+	time.Sleep(time.Duration(rDuration) * time.Millisecond)
 
 	near := a.Connections[*n]
 	for _, t := range near {

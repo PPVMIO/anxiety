@@ -20,7 +20,7 @@ var BecausINeedToNapForABigNightInBrooklyn = graph.Thought{Value: "BecausINeedTo
 var AlsoIfIGoToHappyHour = graph.Thought{Value: "AlsoIfIGoToHappyHour"}
 var WhenWillICook = graph.Thought{Value: "WhenWillICook"}
 var YouAlreadyKnowImGoingToUberHomeSaturdayNight = graph.Thought{Value: "YouAlreadyKnowImGoingToUberHomeSaturdayNight"}
-var DontWantToSpendThatMoney = graph.Thought{Value: "DontWantToSpendThatMoney"}
+var DontWantToSpendThatMoneyOnSeamless = graph.Thought{Value: "DontWantToSpendThatMoneyOnSeamless"}
 var GottaPayOffThoseLoans = graph.Thought{Value: "GottaPayOffThoseLoans"}
 var NoneOfThatIsAConcernAnymore = graph.Thought{Value: "NoneOfThatIsAConcernAnymore"}
 var AllOfThatMentalCapacityUsedForPreCorona = graph.Thought{Value: "AllOfThatMentalCapacityUsedForPreCorona"}
@@ -66,7 +66,7 @@ func iTalkToMyselfWayMoreNowLmao(a *graph.Anxiety) {
 	a.AddThought(&AlsoIfIGoToHappyHour)
 	a.AddThought(&WhenWillICook)
 	a.AddThought(&YouAlreadyKnowImGoingToUberHomeSaturdayNight)
-	a.AddThought(&DontWantToSpendThatMoney)
+	a.AddThought(&DontWantToSpendThatMoneyOnSeamless)
 	a.AddThought(&GottaPayOffThoseLoans)
 	a.AddThought(&NoneOfThatIsAConcernAnymore)
 	a.AddThought(&AllOfThatMentalCapacityUsedForPreCorona)
@@ -94,4 +94,49 @@ func iTalkToMyselfWayMoreNowLmao(a *graph.Anxiety) {
 	a.AddThought(&Shudders)
 	a.AddThought(&Gags)
 
+	a.Connect(&ITalkToMyselfWayMoreNowLmao, &IThinkTheHardestPartAboutQuarantineForMe)
+	a.Connect(&IThinkTheHardestPartAboutQuarantineForMe, &IsIHaveMoreTime)
+	a.Connect(&IsIHaveMoreTime, &AndMoreMentalSpace)
+	a.Connect(&AndMoreMentalSpace, &ButTheresThisTension)
+	a.Connect(&AndMoreMentalSpace, &BecauseIhaveLessPhysicalSpace)
+	a.Connect(&IThinkTheHardestPartAboutQuarantineForMe, &LikeIDontHavetoWorryAbout)
+	a.Connect(&LikeIDontHavetoWorryAbout, &HappyHourPlans)
+	a.Connect(&HappyHourPlans, &SoIDontHaveToThinkAbout)
+	a.Connect(&SoIDontHaveToThinkAbout, &HowWillIMoveMyThirdWorkoutOnThursday)
+	a.Connect(&SoIDontHaveToThinkAbout, &ToMakeTimeToGetDrunkWithCoworkers)
+	a.Connect(&SoIDontHaveToThinkAbout, &ICantMoveItToFriday)
+	a.Connect(&SoIDontHaveToThinkAbout, &BecausINeedToNapForABigNightInBrooklyn)
+	a.Connect(&SoIDontHaveToThinkAbout, &AlsoIfIGoToHappyHour)
+	a.Connect(&SoIDontHaveToThinkAbout, &WhenWillICook)
+	a.Connect(&WhenWillICook, &YouAlreadyKnowImGoingToUberHomeSaturdayNight)
+	a.Connect(&WhenWillICook, &DontWantToSpendThatMoneyOnSeamless)
+	a.Connect(&DontWantToSpendThatMoneyOnSeamless, &GottaPayOffThoseLoans)
+	a.Connect(&HappyHourPlans, &NoneOfThatIsAConcernAnymore)
+	a.Connect(&NoneOfThatIsAConcernAnymore, &AllOfThatMentalCapacityUsedForPreCorona)
+	a.Connect(&AllOfThatMentalCapacityUsedForPreCorona, &Cleared)
+	a.Connect(&Cleared, &MyMindIsIdle)
+	a.Connect(&MyMindIsIdle, &SoItMakesUpProblems)
+	a.Connect(&MyMindIsIdle, &ItMakesUpThingsINeedToGetDone)
+	a.Connect(&MyMindIsIdle, &AndImHavingTroubleFindingWhereToPutThisEnergy)
+	a.Connect(&AndImHavingTroubleFindingWhereToPutThisEnergy, &MyWork)
+	a.Connect(&MyWork, &FuckWork)
+	a.Connect(&AndImHavingTroubleFindingWhereToPutThisEnergy, &ASignificantOther)
+	a.Connect(&ASignificantOther, &LolIWish)
+	a.Connect(&LolIWish, &Kinda)
+	a.Connect(&IThinkTheHardestPartAboutQuarantineForMe, &LonlinessIsABigPartOfQuarantine)
+	a.Connect(&LonlinessIsABigPartOfQuarantine, &NotAllTheTime)
+	a.Connect(&NotAllTheTime, &ItsMoreLikeCertainMomentsOfLonliness)
+	a.Connect(&ItsMoreLikeCertainMomentsOfLonliness, &ThatIFindToBeVeryIntense)
+	a.Connect(&ItsMoreLikeCertainMomentsOfLonliness, &AndBeforeCoronaIWasTooBusyToEvenHaveTheseTypesOfMoments)
+	a.Connect(&LonlinessIsABigPartOfQuarantine, &IFindItALotHarderToBeAlone)
+	a.Connect(&LonlinessIsABigPartOfQuarantine, &IUsedToPrideMyselfOnBeingAbleToBeByMyself)
+	a.Connect(&IUsedToPrideMyselfOnBeingAbleToBeByMyself, &AloneNotLonely)
+	a.Connect(&AloneNotLonely, &IAlwaysUsedtoConsiderMyselfAnIntrovert)
+	a.Connect(&IAlwaysUsedtoConsiderMyselfAnIntrovert, &ButImStartingToThinkIveBecomeMuchMoreAkinToBeing)
+	a.Connect(&ButImStartingToThinkIveBecomeMuchMoreAkinToBeing, &AnExtrovert)
+	a.Connect(&AnExtrovert, &Shudders)
+	a.Connect(&AnExtrovert, &Gags)
+
+	//Loop
+	a.Connect(&Gags, &ITalkToMyselfWayMoreNowLmao)
 }
