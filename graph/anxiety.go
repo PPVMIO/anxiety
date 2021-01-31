@@ -84,11 +84,12 @@ func (a *Anxiety) visit(n *Thought, visitedThoughts ListMap, level int) {
 
 	visitedThoughts.visit(n)
 
-	// color.Set(pickColor(visitedThoughts.visited[n], a.loop))
-	color.Set(pickColor(level, a.loop))
-	// fmt.Printf("[%d] "+indent(level)+n.Value+"", visitedThoughts.visited[n])
-	fmt.Printf(n.Value+"_%d     ", visitedThoughts.visited[n])
-	color.Unset()
+	c := pickColor(level, a.loop)
+	c.Printf(n.Value+"_%d", visitedThoughts.visited[n])
+	c.DisableColor()
+	for i := 0; i < chance(5, 2); i++ {
+		fmt.Printf("  ")
+	}
 
 	rDuration := chance(2000, 500)
 	time.Sleep(time.Duration(rDuration) * time.Millisecond)
@@ -104,7 +105,7 @@ func (a *Anxiety) randomVisit(visitedThoughts ListMap, level int) {
 	a.visit(randomThought, visitedThoughts, level)
 }
 
-func pickColor(n int, loop bool) color.Attribute {
+func pickColor(n int, loop bool) color.Color {
 	colors := map[int]color.Attribute{
 		0: color.FgHiWhite,
 		1: color.FgHiGreen,
@@ -114,7 +115,23 @@ func pickColor(n int, loop bool) color.Attribute {
 		5: color.FgHiCyan,
 		6: color.FgHiRed,
 	}
-	return colors[n%len(colors)]
+
+	c := color.New(colors[n%len(colors)])
+
+	decorators := map[int]color.Attribute{
+		0: color.Bold,
+		1: color.Underline,
+		2: color.Italic,
+		3: color.ReverseVideo,
+		4: color.CrossedOut,
+	}
+
+	r := chance(6, 0)
+	if r == 0 || r == 1 || r == 2 || r == 3 || r == 4 {
+		c.Add(decorators[r])
+	}
+
+	return *c
 }
 
 func indent(level int) string {
