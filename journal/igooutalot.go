@@ -9,7 +9,7 @@ var ILikeGettingFuckedUp = graph.Thought{Value: "ILikeGettingFuckedUp"}
 var WhyDoIDoItSoMuch = graph.Thought{Value: "WhyDoIDoItSoMuch"}
 var IOnlyReallyDoPartyDrugsNow = graph.Thought{Value: "IOnlyReallyDoPartyDrugsNow"}
 var ICantDoAnyOfThatPsychedelicShit = graph.Thought{Value: "ICantDoAnyOfThatPsychedelicShit"}
-var ImTooHighStrug = graph.Thought{Value: "ImTooHighStrug"}
+var ImTooHighStrung = graph.Thought{Value: "ImTooHighStrung"}
 var IGuessTheresYourAnswer = graph.Thought{Value: "IGuessTheresYourAnswer"}
 var ThatsWhyIGoOut = graph.Thought{Value: "ThatsWhyIGoOut"}
 var ISpendTheEntireWorkWeek = graph.Thought{Value: "ISpendTheEntireWorkWeek"}
@@ -45,7 +45,7 @@ func iGoOutALot(a *graph.Anxiety) {
 	a.AddThought(&WhyDoIDoItSoMuch)
 	a.AddThought(&IOnlyReallyDoPartyDrugsNow)
 	a.AddThought(&ICantDoAnyOfThatPsychedelicShit)
-	a.AddThought(&ImTooHighStrug)
+	a.AddThought(&ImTooHighStrung)
 	a.AddThought(&IGuessTheresYourAnswer)
 	a.AddThought(&ThatsWhyIGoOut)
 	a.AddThought(&ISpendTheEntireWorkWeek)
@@ -71,8 +71,8 @@ func iGoOutALot(a *graph.Anxiety) {
 
 	a.Connect(&IGoOutALot, &ILikeGettingFuckedUp)
 	a.Connect(&ILikeGettingFuckedUp, &WhyDoIDoItSoMuch)
-	a.Connect(&WhyDoIDoItSoMuch, &ImTooHighStrug)
-	a.Connect(&ImTooHighStrug, &IGuessTheresYourAnswer)
+	a.Connect(&WhyDoIDoItSoMuch, &ImTooHighStrung)
+	a.Connect(&ImTooHighStrung, &IGuessTheresYourAnswer)
 	a.Connect(&IGuessTheresYourAnswer, &ThatsWhyIGoOut)
 	a.Connect(&ThatsWhyIGoOut, &ISpendTheEntireWorkWeek)
 	a.Connect(&ISpendTheEntireWorkWeek, &FunctioningAtThisSuperHighCapacity)
